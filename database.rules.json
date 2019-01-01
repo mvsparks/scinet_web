@@ -1,0 +1,16 @@
+{
+  "rules": {
+    "items": {
+      ".indexOn": ["mac"],
+      ".read": "auth !== null && root.child('users').child(auth.uid).child('role').val() !== 'noaccess'",
+      ".write": "auth !== null && root.child('users').child(auth.uid).child('role').val() !== 'noaccess'"
+    },
+    "users": {
+      "$id": {
+        ".read": "auth.uid === $id"
+      },
+      ".read": "root.child('users').child(auth.uid).child('role').val() === 'superuser'",
+      ".write": "root.child('users').child(auth.uid).child('role').val() === 'superuser'"
+    }
+  }
+}
